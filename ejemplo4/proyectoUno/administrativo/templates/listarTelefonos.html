@@ -1,0 +1,41 @@
+{% extends "master.html" %}
+
+{% block title %}
+Listado de Telefonos
+{% endblock %}
+
+{% block content %}
+<h3>Número de estudiantes</h3>
+
+<table id="tabla_datos">
+
+    <thead>
+        <tr>
+            <th>Estudiante</th>
+            <th>Telefono</th>
+            <th>Tipo</th>
+            <th>Operadora</th>
+            <th>Editar</th>
+        </tr>
+    </thead>
+
+    {% for t in numeroTelefonico %}
+    <tr>
+        <td> {{t.estudiante.nombre}} {{t.estudiante.apellido}} </td>
+        <td> {{t.telefono}} </td>
+        <td> {{t.tipo}} </td>
+        <td> {{t.obtenerOperadora}} </td>
+        <td>
+            [<a href="{% url 'editar_numero_telefonico' t.id    %}" >
+                Editar</a>]
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#tabla_datos').DataTable();
+    });
+</script>
+{% endblock %}

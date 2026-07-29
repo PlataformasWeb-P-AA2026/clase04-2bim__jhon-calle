@@ -85,6 +85,14 @@ def eliminar_estudiante(request, id):
     estudiante.delete()
     return redirect(index)
 
+def listar_telefono(request):
+    """
+        Listar los registros del modelo Estudiante,
+        obtenidos de la base de datos.
+    """
+    numeroTelefonico = NumeroTelefonico.objects.all()
+    informacion_template = {'numeroTelefonico': numeroTelefonico}
+    return render(request, 'listarTelefonos.html', informacion_template)
 
 def crear_numero_telefonico(request):
     """

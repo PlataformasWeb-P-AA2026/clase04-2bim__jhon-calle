@@ -52,6 +52,17 @@ class NumeroTelefonicoForm(ModelForm):
     class Meta:
         model = NumeroTelefonico
         fields = ['telefono', 'tipo', 'estudiante']
+    
+    def clean_telefono(self):
+        valor = self.cleaned_data['telefono']
+        prefijo = valor[:3]
+
+        if prefijo != "098" and prefijo != "099":
+            raise forms.ValidationError(
+                "No pertenece a ninguna telefonía válida"
+            )
+
+        return valor
 
 
 class NumeroTelefonicoEstudianteForm(ModelForm):
@@ -65,3 +76,14 @@ class NumeroTelefonicoEstudianteForm(ModelForm):
     class Meta:
         model = NumeroTelefonico
         fields = ['telefono', 'tipo', 'estudiante']
+
+    def clean_telefono(self):
+        valor = self.cleaned_data['telefono']
+        prefijo = valor[:3]
+
+        if prefijo != "098" and prefijo != "099":
+            raise forms.ValidationError(
+                "No pertenece a ninguna telefonía válida"
+            )
+
+        return valor

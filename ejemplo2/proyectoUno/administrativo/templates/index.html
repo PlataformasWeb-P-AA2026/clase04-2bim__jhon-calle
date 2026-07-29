@@ -20,12 +20,11 @@
       <ul>
         {% for t in e.numeros_telefonicos.all %}
           <li>
-            <span>{{t.telefono}} - {{t.tipo}} - [<a href="{% url 'editar_numero_telefonico' t.id %}">editar</a>] </span>
+            <span>{{t.telefono}} - {{t.tipo}} - {{t.obtenerOperadora}} [<a href="{% url 'editar_numero_telefonico' t.id %}">editar</a>] </span>
           </li>
         {% endfor %}
       </ul>
-    [<a href="{% url 'crear_numero_telefonico_estudiante' e.id%}">+Teléfono</a>]
-    ({{e.obtener_nro_tel}}# actuales)
+    [<a href="{% url 'crear_numero_telefonico_estudiante' e.id%}">+Teléfono</a>] {{ e.obtenerNumTelefonicos }}# Actuales
   </li>
   <hr />
 
